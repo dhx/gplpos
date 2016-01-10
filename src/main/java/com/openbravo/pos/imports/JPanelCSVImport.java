@@ -624,7 +624,7 @@ public class JPanelCSVImport extends JPanel implements JPanelView {
         myprod[17] = false;                                                     // SendStatus flag        
         myprod[18] = false;                                                     // isService flag
         myprod[19] = null;                                                      // Attributes
-        myprod[20] = "<HTML><center>" + productName;                            // Display    
+        myprod[20] = "<HTML><center><b>" + productName;                            // Display    
         myprod[21] = false;                                                     // isVariable price flag
         myprod[22] = false;                                                     // IsVerpAtrib
         myprod[23] = productName;                                               // Text tip string

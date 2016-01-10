@@ -1132,12 +1132,12 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_jCatalogOrder.setBounds(370, 60, 80, 25);
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel15.setText("Service Item");
+        jLabel15.setText(AppLocal.getIntString("label.serviceitem"));
         jPanel2.add(jLabel15);
         jLabel15.setBounds(10, 90, 150, 25);
 
         m_jService.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        m_jService.setToolTipText("A Service Item will not be deducted from the Inventory");
+        m_jService.setToolTipText(AppLocal.getIntString("label.serviceitemtooltext"));
         jPanel2.add(m_jService);
         m_jService.setBounds(160, 90, 30, 25);
         m_jService.getAccessibleContext().setAccessibleDescription("null");

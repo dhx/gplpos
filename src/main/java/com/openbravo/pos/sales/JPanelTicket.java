@@ -2006,6 +2006,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
             }
         });
         jPanel1.add(j_btnKitchenPrt);
+        j_btnKitchenPrt.getAccessibleContext().setAccessibleDescription("an Küche senden");
 
         m_jButtonsExt.add(jPanel1);
 

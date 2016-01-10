@@ -259,6 +259,9 @@
                               <Dimension value="[50, 40]"/>
                             </Property>
                           </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="an K&#xfc;che senden"/>
+                          </AccessibilityProperties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="j_btnKitchenPrtActionPerformed"/>
                           </Events>

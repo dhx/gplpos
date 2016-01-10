@@ -57,6 +57,7 @@
     <class name="button.totaldiscount"/>
     <class name="button.print"/>
     <class name="button.opendrawer"/>
+    <class name="button.keyboard"/>
     
 <!-- Additional button scripts -->
     <class name="button.linediscount"/>

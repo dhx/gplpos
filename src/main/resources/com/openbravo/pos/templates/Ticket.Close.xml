@@ -60,7 +60,7 @@ JOptionPane pane = new JOptionPane();
 Font originalFont=pane.getFont();
 
 UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("ARIAL",Font.PLAIN,20)));
-message = "Change: " + change;
+message = "Wechselgeld: " + change;
  JLabel FontText = new JLabel(message);
  FontText.setFont (new Font ( "Arial", Font.BOLD, 36) );
 
@@ -68,7 +68,7 @@ if(isCash) {
      JOptionPane pane = new JOptionPane();
      pane.setMessage(FontText);
      pane.setPreferredSize( new Dimension(450,150));
-     JDialog dialog = pane.createDialog("Cash payment");
+     JDialog dialog = pane.createDialog("Zahlung");
     new Thread(new Runnable() {
          void run() {
             dialog.show();
