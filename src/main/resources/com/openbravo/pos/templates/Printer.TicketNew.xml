@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    uniCenta oPOS - Touch friendly Point Of Sale
-    Copyright (c) 2009-2015 uniCenta.
-    http://sourceforge.net/projects/unicentaopos
-
-    This file is part of uniCenta oPOS.
-
-    uniCenta oPOS is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    uniCenta oPOS is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with uniCenta oPOS.  If not, see <http://www.gnu.org/licenses/>.
--->
+<!-- 
+    Originalscript- http://sourceforge.net/projects/unicentaopos _GPLPos Modifiziert fuer Oesterreich von Prossliner Alexander
+                    http://sourceforge.net/p/gplpos
+                    http://gplpos.com
+                    http://apkassen.com
+ -->
 <output>
     <display>
         <line>
@@ -26,20 +12,20 @@
             <text align="right" length="10">${ticket.printTotal()}</text>
         </line>
         <line>
-            <text align="center" length="20">Thank you for your custom</text>
+            <text align="center" length="20">Danke für ihren Besuch</text>
         </line>
     </display>
     <ticket>
         <image>Printer.Ticket.Logo</image>
         <line></line>
         <line>
-            <text align="center" length="42">uniCenta oPOS</text>
+            <text align="center" length="42">GPLPos</text>
         </line>
         <line>
             <text align="center" length="42">Touch Friendly Point Of Sale</text>
         </line>
         <line>
-            <text align="center" length="42">Copyright (c) 2009-2015 uniCenta</text>
+            <text align="center" length="42">Copyright (c)2015 Prossliner</text>
         </line>
         <line>
             <text align="center" length="42">Printer.TicketNew</text>
@@ -47,7 +33,7 @@
         <line></line>
         #if (${ticket.ticketType} == 0)
           <line>
-            <text align="left" length="15">Receipt:</text>
+            <text align="left" length="15">Rechnung:</text>
             <text>${ticket.printId()}</text>
           </line>
         #end
@@ -58,12 +44,12 @@
           </line>
         #end
         <line>
-            <text align="left" length="15">Date:</text>
+            <text align="left" length="15">Datum:</text>
             <text>${ticket.printDate()}</text>
         </line>
         #if ($ticket.getCustomer())
           <line>
-            <text align="left" length="15">Customer:</text>
+            <text align="left" length="15">Kunde:</text>
             <text>${ticket.getCustomer().printName()}</text>
           </line>
           <line>
@@ -78,21 +64,21 @@
 
         #if (${tickettext.place} != ${place})
         <line>
-           <text align="left" length="15">Table:</text>
+           <text align="left" length="15">Tisch:</text>
            <text>${place}</text>
         </line>
         #end
         
           <line>
-            <text align="left" length="15">Served by:</text>
+            <text align="left" length="15">bedient von:</text>
             <text>${ticket.printUser()}</text>
           </line>
           <line></line>
           <line>
-            <text align ="left" length="17">Item</text>
-            <text align ="right" length="8">Price</text>
-            <text align ="right" length="7">Qty</text>
-            <text align ="right" length="10">Value</text>
+            <text align ="left" length="17">Artikel</text>
+            <text align ="right" length="8">Preis</text>
+            <text align ="right" length="7">Menge</text>
+            <text align ="right" length="10">Wert</text>
           </line>
           <line>
             <text>------------------------------------------</text>
@@ -130,20 +116,20 @@
     #foreach ($paymentline in $ticket.payments)
           #if ($paymentline.name == "cash")
             <line>
-              <text bold="true">Cash</text>
+              <text bold="true">Bar</text>
             </line>
             <line>
-              <text align="left" length="22">Tendered:</text>
+              <text align="left" length="22">erhalten:</text>
               <text align ="right" length="20">${paymentline.printPaid()}</text>
             </line>
             <line>
-              <text align="left" length="22">Change:</text>
+              <text align="left" length="22">gewechselt:</text>
               <text align ="right" length="20">${paymentline.printChange()}</text>
             </line>
           #end
           #if ($paymentline.name == "cashrefund")
             <line>
-              <text bold="true">Refund</text>
+              <text bold="true">Rückerstattung:</text>
             </line>
             <line>
               <text align ="right" length="42">${paymentline.printTotal()}</text>
@@ -151,7 +137,7 @@
           #end
           #if ($paymentline.name == "magcard")
             <line>
-              <text bold="true">Card</text>
+              <text bold="true">Karte</text>
           </line>
           <line>
             <text align ="right" length="42">${paymentline.printTotal()}</text>
@@ -238,11 +224,11 @@
     #end
         <line></line>
         <line>
-            <text align ="left" bold="true" length="16">Nett of Tax:</text>
+            <text align ="left" bold="true" length="16">Netto:</text>
             <text align ="right" length="26">${ticket.printSubTotal()}</text>
         </line>
         <line>
-            <text align ="left" length="16">Taxes:</text>
+            <text align ="left" length="16">Steuer:</text>
             <text align ="right" length="26">${ticket.printTax()}</text>
         </line>
         #foreach ($taxinfo in $taxes)
@@ -254,10 +240,10 @@
         #end
         <line></line>
         <line>
-            <text align="center" length="42">Thank you for your custom</text>
+            <text align="center" length="42">Danke für ihren Besuch</text>
         </line>
         <line>
-            <text align="center" length="42">Please Call Again</text>
+            <text align="center" length="42">Kassensystem von www.apkassen.com</text>
         </line>
     </ticket>
 

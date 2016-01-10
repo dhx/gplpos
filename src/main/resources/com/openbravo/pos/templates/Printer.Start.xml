@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Originalscript- http://sourceforge.net/projects/unicentaopos _ Modifiziert fuer Oesterreich von Prossliner Alexander
+    Originalscript- http://sourceforge.net/projects/unicentaopos _GPLPos Modifiziert fuer Oesterreich von Prossliner Alexander
+                    http://sourceforge.net/p/gplpos
+                    http://gplpos.com
+                    http://apkassen.com
  -->
 <output>
 <!-- DISPLAY ANIMATION OPTIONS -->
@@ -10,10 +13,10 @@
 <!--            <display animation="curtain"> -->
 <!--            <display animation="none"> -->
         <line>
-            <text>uniCenta oPOS</text>
+            <text>GPLPos</text>
         </line>
         <line>
-            <text>Point Of Sale</text>
+            <text>Open Source - Point Of Sale</text>
         </line>
     </display>
 </output>
