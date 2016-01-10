@@ -20,7 +20,7 @@
 
 DIRNAME=`dirname $0`
 echo $DIRNAME
-#CP=$DIRNAME/unicentaopos.jar.
+#CP=$DIRNAME/gplpos.jar.
 CP=$CP:$DIRNAME/locales/
 CP=$CP:$DIRNAME/reports/
 
@@ -41,4 +41,4 @@ Darwin) LIBRARYPATH=/lib/Mac_OS_X;;
 CYGWIN*|MINGW32*) LIBRARYPATH=/lib/Windows/i368-mingw32;;
 esac
 # start uniCenta oPOS
-java -cp $CP -Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel -jar unicentaopos.jar "$@"
+java -cp $CP -Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel -jar "$DIRNAME/gplpos.jar" "$@"
