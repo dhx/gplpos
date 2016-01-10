@@ -1,0 +1,6 @@
+folgende Fremde Programme werden benötigt damit GPLPos funktioniert:
+
+Java Entwicklungsumgebung
+MySQL (Apache Derby läßt viele funktionen außer acht)
+
+Support -> service@apkassen.com

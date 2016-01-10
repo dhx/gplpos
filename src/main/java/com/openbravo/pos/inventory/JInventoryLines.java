@@ -52,7 +52,7 @@ public class JInventoryLines extends javax.swing.JPanel {
                 , new DefaultCellEditor(new JTextField()));
         c.setHeaderValue(AppLocal.getIntString("label.item"));
         columns.addColumn(c);
-        c = new TableColumn(1, 75
+        c = new TableColumn(1, 35
                 , new DataCellRenderer(javax.swing.SwingConstants.RIGHT)
                 , new DefaultCellEditor(new JTextField()));
         c.setHeaderValue(AppLocal.getIntString("label.units"));

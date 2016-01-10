@@ -1,4 +1,4 @@
-//    uniCenta oPOS  - Touch Friendly Point Of Sale
+                                                                                                  //    uniCenta oPOS  - Touch Friendly Point Of Sale
 //    Copyright (c) 2009-2015 uniCenta & previous Openbravo POS works
 //    http://www.unicenta.com
 //
@@ -53,7 +53,7 @@ public class JNumberKeys extends javax.swing.JPanel {
         m_jCE.addActionListener(new MyKeyNumberListener('\u007f'));
         m_jPlus.addActionListener(new MyKeyNumberListener('+'));        
         m_jMinus.addActionListener(new MyKeyNumberListener('-'));        
-        m_jEquals.addActionListener(new MyKeyNumberListener('='));
+        m_jEquals.addActionListener(new MyKeyNumberListener('='));    
     }
 
     /**

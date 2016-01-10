@@ -265,6 +265,8 @@ public class AuxiliarEditor extends javax.swing.JPanel implements EditorRecord {
         m_jProduct = new javax.swing.JTextField();
         m_jBarcode = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setPreferredSize(new java.awt.Dimension(700, 100));
         setLayout(null);
@@ -337,6 +339,15 @@ public class AuxiliarEditor extends javax.swing.JPanel implements EditorRecord {
         jLabel4.setPreferredSize(new java.awt.Dimension(70, 25));
         add(jLabel4);
         jLabel4.setBounds(317, 11, 70, 25);
+
+        jTextArea1.setBackground(new java.awt.Color(240, 240, 240));
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Info:\nHier können sie Bezüge zu einzelnen Produkten herstellen.\nOben geben sie das Elternprodukt ein, unten das Bezugsprodukt.\nDas Bezugsprodukt muss in den Stammdaten als \"Zusatz\" markiert sein!");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        add(jScrollPane1);
+        jScrollPane1.setBounds(10, 90, 560, 113);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_jSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jSearchActionPerformed
@@ -371,6 +382,8 @@ public class AuxiliarEditor extends javax.swing.JPanel implements EditorRecord {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField m_jBarcode;
     private javax.swing.JButton m_jEnter1;
     private javax.swing.JButton m_jEnter2;

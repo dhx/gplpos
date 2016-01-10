@@ -74,6 +74,7 @@
 <!-- END Product Button Size -->
 
 <!-- Print Receipt (Default=ENABLED) -->
+<!-- <event key="ticket.total" code="event.total"/> Betrag runden -->
         <printselected value="true"/>
 
 <!-- ADDITIONAL FEATURES ************************************************* -->

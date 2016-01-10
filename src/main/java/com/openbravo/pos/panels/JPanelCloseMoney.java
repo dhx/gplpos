@@ -229,7 +229,7 @@ public class JPanelCloseMoney extends JPanel implements JPanelView, BeanFactoryA
         jColumns = m_jsalestable.getColumnModel();
         jColumns.getColumn(0).setPreferredWidth(108);
         jColumns.getColumn(0).setResizable(false);
-        jColumns.getColumn(1).setPreferredWidth(75);
+        jColumns.getColumn(1).setPreferredWidth(35);
         jColumns.getColumn(1).setResizable(false);
         jColumns.getColumn(2).setPreferredWidth(75);
         jColumns.getColumn(2).setResizable(false);        

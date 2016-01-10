@@ -809,7 +809,7 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         m_jLblTotalEuros1.setText(AppLocal.getIntString("label.totalcash")); // NOI18N
         jPanel4.add(m_jLblTotalEuros1);
 
-        m_jPayTotal.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        m_jPayTotal.setFont(new java.awt.Font("Arial", 1, 24));
         m_jPayTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         m_jPayTotal.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow")), javax.swing.BorderFactory.createEmptyBorder(1, 4, 1, 4)));
         m_jPayTotal.setOpaque(true);

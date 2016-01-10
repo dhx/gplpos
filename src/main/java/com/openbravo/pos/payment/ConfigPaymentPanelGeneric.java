@@ -85,7 +85,7 @@ public class ConfigPaymentPanelGeneric extends javax.swing.JPanel implements Pay
         jLabel2 = new javax.swing.JLabel();
         jtxtCommercePwd = new javax.swing.JPasswordField();
 
-        setPreferredSize(new java.awt.Dimension(650, 75));
+        setPreferredSize(new java.awt.Dimension(600, 75));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText(AppLocal.getIntString("label.commerceid")); // NOI18N

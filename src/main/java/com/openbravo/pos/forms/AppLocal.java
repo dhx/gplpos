@@ -30,17 +30,17 @@ public class AppLocal {
     /**
      *
      */
-    public static final String APP_NAME = "uniCenta oPOS";
+    public static final String APP_NAME = "GPLpos";
 
     /**
      *
      */
-    public static final String APP_ID = "unicentaopos";
+    public static final String APP_ID = "gplpos";
 
     /**
      *
      */
-    public static final String APP_VERSION = "3.91.2";
+    public static final String APP_VERSION = "0.8.1";
 
     private static final LocaleResources m_resources;
     
