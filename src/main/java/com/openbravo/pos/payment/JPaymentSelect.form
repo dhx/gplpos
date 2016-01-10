@@ -47,7 +47,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="m_jTotalEuros">
+        <Component class="javax.swing.JLabel" name="m_jPayTotal">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" id="white" palette="0" red="ff" type="palette"/>

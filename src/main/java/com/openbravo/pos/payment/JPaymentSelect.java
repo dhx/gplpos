@@ -138,10 +138,19 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
         this.customerext = customerext;
 
-        setPrintSelected(!Boolean.valueOf(app.getProperties().getProperty("till.receiptprintoff")).booleanValue());
+        setPrintSelected(!Boolean.parseBoolean(app.getProperties().getProperty("till.receiptprintoff")));
         m_jButtonPrint.setSelected(printselected);
 
-        m_jTotalEuros.setText(Formats.CURRENCY.formatValue(new Double(m_dTotal)));
+        m_jPayTotal.setText(Formats.CURRENCY.formatValue(m_dTotal));
+        
+// N. Deppe 08/11/2015
+// Fix issue where dialog keeps moving lower and lower on the screen
+// Get the size of the screen, and center the dialog in the window
+        Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension thisDim = this.getSize();
+        int x = (screenDim.width - thisDim.width) / 2;
+        int y = (screenDim.height - thisDim.height) / 2;
+        this.setLocation(x, y);        
 
         addTabs();
 
@@ -723,10 +732,12 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
     private void printState() {
 
-        m_jRemaininglEuros.setText(Formats.CURRENCY.formatValue(new Double(m_dTotal - m_aPaymentInfo.getTotal())));
+        m_jRemaininglEuros.setText(Formats.CURRENCY.formatValue(m_dTotal - m_aPaymentInfo.getTotal()));
         m_jButtonRemove.setEnabled(!m_aPaymentInfo.isEmpty());
         m_jTabPayment.setSelectedIndex(0); // selecciono el primero
-        ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).activate(customerext, m_dTotal - m_aPaymentInfo.getTotal(), m_sTransactionID);
+        ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).activate(
+                customerext, m_dTotal - m_aPaymentInfo.getTotal()
+                , m_sTransactionID);
     }
 
     /**
@@ -775,7 +786,7 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
         jPanel4 = new javax.swing.JPanel();
         m_jLblTotalEuros1 = new javax.swing.JLabel();
-        m_jTotalEuros = new javax.swing.JLabel();
+        m_jPayTotal = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         m_jLblRemainingEuros = new javax.swing.JLabel();
         m_jRemaininglEuros = new javax.swing.JLabel();
@@ -798,13 +809,13 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         m_jLblTotalEuros1.setText(AppLocal.getIntString("label.totalcash")); // NOI18N
         jPanel4.add(m_jLblTotalEuros1);
 
-        m_jTotalEuros.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        m_jTotalEuros.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        m_jTotalEuros.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow")), javax.swing.BorderFactory.createEmptyBorder(1, 4, 1, 4)));
-        m_jTotalEuros.setOpaque(true);
-        m_jTotalEuros.setPreferredSize(new java.awt.Dimension(125, 25));
-        m_jTotalEuros.setRequestFocusEnabled(false);
-        jPanel4.add(m_jTotalEuros);
+        m_jPayTotal.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        m_jPayTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        m_jPayTotal.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow")), javax.swing.BorderFactory.createEmptyBorder(1, 4, 1, 4)));
+        m_jPayTotal.setOpaque(true);
+        m_jPayTotal.setPreferredSize(new java.awt.Dimension(125, 25));
+        m_jPayTotal.setRequestFocusEnabled(false);
+        jPanel4.add(m_jPayTotal);
 
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
@@ -908,8 +919,8 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
         getContentPane().add(jPanel5, java.awt.BorderLayout.SOUTH);
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-672)/2, (screenSize.height-497)/2, 672, 497);
+        setSize(new java.awt.Dimension(672, 497));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jButtonRemoveActionPerformed
@@ -990,8 +1001,8 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     private javax.swing.JButton m_jButtonRemove;
     private javax.swing.JLabel m_jLblRemainingEuros;
     private javax.swing.JLabel m_jLblTotalEuros1;
+    private javax.swing.JLabel m_jPayTotal;
     private javax.swing.JLabel m_jRemaininglEuros;
     private javax.swing.JTabbedPane m_jTabPayment;
-    private javax.swing.JLabel m_jTotalEuros;
     // End of variables declaration//GEN-END:variables
 }

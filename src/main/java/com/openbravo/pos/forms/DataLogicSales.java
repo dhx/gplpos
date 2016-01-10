@@ -225,7 +225,8 @@ public class DataLogicSales extends BeanFactoryDataSingle {
      * @throws BasicException
      */
     public final ProductInfoExt getProductInfoByCode(String sCode) throws BasicException {
-        if (sCode.length() == 13 && (sCode.startsWith("2") || sCode.startsWith("02"))) 
+        if (sCode.length() == 13 || sCode.length() == 12 
+                && (sCode.startsWith("2") || sCode.startsWith("02"))) 
             return getProductInfoByShortCode(sCode);
         else {
             return (ProductInfoExt) new PreparedSentence(s

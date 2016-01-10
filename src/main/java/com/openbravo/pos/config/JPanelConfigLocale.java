@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfig {
     
-    private DirtyManager dirty = new DirtyManager();
+    private final DirtyManager dirty = new DirtyManager();
     
     private final static String DEFAULT_VALUE = "(Default)";
 
@@ -53,7 +53,7 @@ public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfi
         jcboTime.addActionListener(dirty);
         jcboDatetime.addActionListener(dirty);
         
-        List<Locale> availablelocales = new ArrayList<Locale>();
+        List<Locale> availablelocales = new ArrayList<>();
         availablelocales.addAll(Arrays.asList(Locale.getAvailableLocales())); // Available java locales
         addLocale(availablelocales, new Locale("eu", "ES", "")); // Basque
         addLocale(availablelocales, new Locale("gl", "ES", "")); // Gallegan
@@ -99,6 +99,7 @@ public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfi
      *
      * @return
      */
+    @Override
     public boolean hasChanged() {
         return dirty.isDirty();
     }
@@ -107,6 +108,7 @@ public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfi
      *
      * @return
      */
+    @Override
     public Component getConfigComponent() {
         return this;
     }
@@ -115,6 +117,7 @@ public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfi
      *
      * @param config
      */
+    @Override
     public void loadProperties(AppConfig config) {
         
         String slang = config.getProperty("user.language");
@@ -149,6 +152,7 @@ public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfi
      *
      * @param config
      */
+    @Override
     public void saveProperties(AppConfig config) {
         
         Locale l = ((LocaleInfo) jcboLocale.getSelectedItem()).getLocale();
@@ -160,6 +164,9 @@ public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfi
             config.setProperty("user.language", l.getLanguage());
             config.setProperty("user.country", l.getCountry());
             config.setProperty("user.variant", l.getVariant());
+System.out.println(l.getLanguage());
+System.out.println(l.getCountry());
+System.out.println(l.getVariant());
         }
          
         config.setProperty("format.integer", readWithDefault(jcboInteger.getSelectedItem()));
@@ -185,12 +192,12 @@ public class JPanelConfigLocale extends javax.swing.JPanel implements PanelConfi
         if (value == null || value.equals("") || value.equals(DEFAULT_VALUE)) {
             return DEFAULT_VALUE;
         } else {
-            return value.toString();
+            return value;
         }
     }
     
     private static class LocaleInfo {
-        private Locale locale;
+        private final Locale locale;
         
         public LocaleInfo(Locale locale) {
             this.locale = locale;

@@ -23,7 +23,6 @@ import bsh.EvalError;
 import bsh.Interpreter;
 import com.openbravo.basic.BasicException;
 import com.openbravo.data.gui.ComboBoxValModel;
-import com.openbravo.data.gui.JMessageDialog;
 import com.openbravo.data.gui.ListKeyed;
 import com.openbravo.data.gui.MessageInf;
 import com.openbravo.data.loader.SentenceList;
@@ -652,22 +651,22 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
                 m_ticketlines.addTicketLine(oLine); // Pintamos la linea en la vista... 
              
                 try {
-                int i =  m_ticketlines.getSelectedIndex();
-                TicketLineInfo line = m_oTicket.getLine(i);                
-                if (line.isProductVerpatrib()){
-                    JProductAttEdit attedit = JProductAttEdit.getAttributesEditor(this, m_App.getSession());
-                    attedit.editAttributes(line.getProductAttSetId(), line.getProductAttSetInstId());
-                    attedit.setVisible(true);
-                if (attedit.isOK()) {
-                    // The user pressed OK
-                    line.setProductAttSetInstId(attedit.getAttributeSetInst());
-                    line.setProductAttSetInstDesc(attedit.getAttributeSetInstDescription());
-                    paintTicketLine(i, line);
-                }}
-            } catch (BasicException ex) {
-                MessageInf msg = new MessageInf(MessageInf.SGN_WARNING, AppLocal.getIntString("message.cannotfindattributes"), ex);
-                msg.show(this);
-            }          
+                    int i =  m_ticketlines.getSelectedIndex();
+                    TicketLineInfo line = m_oTicket.getLine(i);                
+                    if (line.isProductVerpatrib()){
+                        JProductAttEdit attedit = JProductAttEdit.getAttributesEditor(this, m_App.getSession());
+                        attedit.editAttributes(line.getProductAttSetId(), line.getProductAttSetInstId());
+                        attedit.setVisible(true);
+                        if (attedit.isOK()) {
+                            line.setProductAttSetInstId(attedit.getAttributeSetInst());
+                            line.setProductAttSetInstDesc(attedit.getAttributeSetInstDescription());
+                            paintTicketLine(i, line);
+                        }
+                    }
+                } catch (BasicException ex) {
+                    MessageInf msg = new MessageInf(MessageInf.SGN_WARNING, AppLocal.getIntString("message.cannotfindattributes"), ex);
+                    msg.show(this);
+                }          
             }
                
             visorTicketLine(oLine);
@@ -905,8 +904,8 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
                     stateToZero();
                 } else if (sCode.startsWith(";")){
                    stateToZero();
-// DEALS WITH VARIABLE PRICE/WEIGHT BARCODES
-                } else if((sCode.length() == 13) && sCode.startsWith("2") || sCode.startsWith("02")) {                    
+// DEALS WITH EAN VARIABLE PRICE/WEIGHT BARCODES
+                } else if((sCode.length() == 13)) {                    
                     try {
                         ProductInfoExt oProduct = dlSales.getProductInfoByCode(sCode);
                         if(oProduct == null) {
@@ -965,9 +964,45 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
                         stateToZero();
                         new MessageInf(eData).show(this);
                     }
+              
+// DEALS WITH UPC VARIABLE PRICE/WEIGHT BARCODES
+                } else if((sCode.length() == 12 && sCode.startsWith("2"))) {                    
+                    try {
+                        ProductInfoExt oProduct = dlSales.getProductInfoByCode(sCode);
+                        if(oProduct == null) {
+                            Toolkit.getDefaultToolkit().beep();
+                            JOptionPane.showMessageDialog(null,
+                                sCode + " - " + AppLocal.getIntString("message.noproduct"),
+                                "Check", JOptionPane.WARNING_MESSAGE);  
+                           stateToZero();
+                        } else {
+                            oProduct.setProperty("product.barcode", sCode);
+                            double dPriceSell = oProduct.getPriceSell(); // default price for product
+                            double weight = 1; // used if barcode includes weight
+                            
+                            String sVariableNum = sCode.substring(8, 11);
+// VARIABLE WEIGHT BY PRICE
+                            dPriceSell = Double.parseDouble(sVariableNum) / 100; // price with two decimals
+                            
+                            TaxInfo tax = taxeslogic.getTaxInfo(oProduct.getTaxCategoryID(), m_oTicket.getCustomer());
+                            dPriceSell /= (1.0 + tax.getRate());
+                            oProduct.setProperty("product.price", Double.toString(dPriceSell));
+
+                            if(m_jaddtax.isSelected()) {
+                                addTicketLine(oProduct, weight, dPriceSell / (1.0 + tax.getRate()));
+                            } else {
+                                addTicketLine(oProduct, weight, dPriceSell);
+                            }
+                            
+                        }
+                    } catch(BasicException eData) {
+                        stateToZero();
+                        new MessageInf(eData).show(this);
+                    }
                 } else {
                     incProductByCode(sCode);
-                }
+                }                
+               
             } else {
                 Toolkit.getDefaultToolkit().beep();
             }
@@ -1308,9 +1343,11 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
 
             try {
                 // reset the payment info
-                taxeslogic.calculateTaxes(ticket);
+               taxeslogic.calculateTaxes(ticket);
+                
                 if (ticket.getTotal()>=0.0){
                     ticket.resetPayments(); //Only reset if is sale
+//                    ticket.resetTaxes();
                 }
                 
                 if (executeEvent(ticket, ticketext, "ticket.total") == null) {
@@ -1943,8 +1980,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         jPanel1.add(m_jbtnScale);
 
         jbtnMooring.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("pos_messages"); // NOI18N
-        jbtnMooring.setText(bundle.getString("button.moorings")); // NOI18N
+        jbtnMooring.setText("Moorings");
         jbtnMooring.setMargin(new java.awt.Insets(8, 14, 8, 14));
         jbtnMooring.setMaximumSize(new java.awt.Dimension(80, 40));
         jbtnMooring.setMinimumSize(new java.awt.Dimension(80, 40));
@@ -1957,6 +1993,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         jPanel1.add(jbtnMooring);
 
         j_btnKitchenPrt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/openbravo/images/printer24.png"))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("pos_messages"); // NOI18N
         j_btnKitchenPrt.setText(bundle.getString("button.sendorder")); // NOI18N
         j_btnKitchenPrt.setToolTipText("Send to Kichen Printer");
         j_btnKitchenPrt.setMargin(new java.awt.Insets(0, 4, 0, 4));

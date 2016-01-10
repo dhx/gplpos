@@ -31,6 +31,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  *
@@ -61,7 +62,7 @@ public class TaxesLogic {
             public int compare(TaxInfo o1, TaxInfo o2) {
                 if (o1.getApplicationOrder() < o2.getApplicationOrder()) {
                     return -1;
-                } else if (o1.getApplicationOrder() == o2.getApplicationOrder()) {
+                } else if (Objects.equals(o1.getApplicationOrder(), o2.getApplicationOrder())) {
                     return 0;
                 } else {
                     return 1;
@@ -116,8 +117,9 @@ public class TaxesLogic {
         
         for (TicketLineInfo line: ticket.getLines()) {
             tickettaxes = sumLineTaxes(tickettaxes, calculateTaxes(line));
+//            System.out.println(tickettaxes);
         }
-        
+//            System.out.println(tickettaxes);        
         ticket.setTaxes(tickettaxes);
     }
     
@@ -295,9 +297,14 @@ public class TaxesLogic {
         
         for (TaxInfo tax : taxlist) {
             if (tax.getParentID() == null && tax.getTaxCategoryID().equals(tcid)) {
-                if ((customer == null || customer.getTaxCustCategoryID() == null) && tax.getTaxCustCategoryID() == null) {
+                if ((customer == null 
+                    || customer.getTaxCustCategoryID() == null) 
+                    && tax.getTaxCustCategoryID() == null) {
                     return tax;
-                } else if (customer != null && customer.getTaxCustCategoryID() != null && customer.getTaxCustCategoryID().equals(tax.getTaxCustCategoryID())) {
+
+                } else if (customer != null 
+                    && customer.getTaxCustCategoryID() != null 
+                    && customer.getTaxCustCategoryID().equals(tax.getTaxCustCategoryID())) {
                     return tax;
                 }
                 
