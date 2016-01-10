@@ -53,6 +53,7 @@ public class DeviceTicket {
 /** 
  * 
  * Creates a new instance of DeviceTicket 
+     * @param props
  */
 //    public DeviceTicket() {
     public DeviceTicket(AppProperties props) {    

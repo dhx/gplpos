@@ -2173,7 +2173,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         m_jSubtotalEuros.setForeground(m_jEditLine.getForeground());
         m_jSubtotalEuros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         m_jSubtotalEuros.setLabelFor(m_jSubtotalEuros);
-        m_jSubtotalEuros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        m_jSubtotalEuros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 1, true));
         m_jSubtotalEuros.setMaximumSize(new java.awt.Dimension(125, 25));
         m_jSubtotalEuros.setMinimumSize(new java.awt.Dimension(80, 25));
         m_jSubtotalEuros.setOpaque(true);
@@ -2186,7 +2186,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         m_jTaxesEuros.setForeground(m_jEditLine.getForeground());
         m_jTaxesEuros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         m_jTaxesEuros.setLabelFor(m_jTaxesEuros);
-        m_jTaxesEuros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        m_jTaxesEuros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 1, true));
         m_jTaxesEuros.setMaximumSize(new java.awt.Dimension(125, 25));
         m_jTaxesEuros.setMinimumSize(new java.awt.Dimension(80, 25));
         m_jTaxesEuros.setOpaque(true);
@@ -2195,11 +2195,11 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         m_jPanTotals.add(m_jTaxesEuros);
 
         m_jTotalEuros.setBackground(m_jEditLine.getBackground());
-        m_jTotalEuros.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        m_jTotalEuros.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         m_jTotalEuros.setForeground(m_jEditLine.getForeground());
         m_jTotalEuros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         m_jTotalEuros.setLabelFor(m_jTotalEuros);
-        m_jTotalEuros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        m_jTotalEuros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 4, true));
         m_jTotalEuros.setMaximumSize(new java.awt.Dimension(125, 25));
         m_jTotalEuros.setMinimumSize(new java.awt.Dimension(80, 25));
         m_jTotalEuros.setOpaque(true);
@@ -2232,7 +2232,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         jPanel9.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
-        m_jPrice.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        m_jPrice.setFont(new java.awt.Font("Arial", 1, 19)); // NOI18N
         m_jPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         m_jPrice.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow")), javax.swing.BorderFactory.createEmptyBorder(1, 4, 1, 4)));
         m_jPrice.setOpaque(true);
@@ -2247,7 +2247,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         gridBagConstraints.weighty = 1.0;
         jPanel9.add(m_jPrice, gridBagConstraints);
 
-        m_jPor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        m_jPor.setFont(new java.awt.Font("Arial", 1, 19)); // NOI18N
         m_jPor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         m_jPor.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(javax.swing.UIManager.getDefaults().getColor("Button.darkShadow")), javax.swing.BorderFactory.createEmptyBorder(1, 4, 1, 4)));
         m_jPor.setOpaque(true);
@@ -2261,8 +2261,17 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         jPanel9.add(m_jPor, gridBagConstraints);
-
         
+        m_jEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/openbravo/images/barcode.png"))); // NOI18N
+        m_jEnter.setToolTipText("Get Barcode");
+        m_jEnter.setFocusPainted(false);
+        m_jEnter.setFocusable(false);
+        m_jEnter.setRequestFocusEnabled(false);
+        m_jEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_jEnterActionPerformed(evt);
+            }
+               });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;

@@ -24,11 +24,11 @@
 
     <display>
         <line>
-            <text align="left" length="10">Order sent to Kitchen</text>
+            <text align="left" length="10">Bestellung an Küche</text>
             <text align="right" length="10">${ticket.printTotal()}</text>
         </line>
         <line>
-            <text align="center" length="20">Thank you.</text>
+            <text align="center" length="20">Danke</text>
         </line>
     </display>
 
@@ -36,21 +36,21 @@
         <line></line>
         <line></line>
         <line size = "1">
-            <text bold = "true" align="center" length="42">Kitchen Order</text>
+            <text bold = "true" align="center" length="42">Küchenbestellung</text>
         </line>
         <line></line>
         <line>
-            <text align="left" length="15">Receipt:</text>
+            <text align="left" length="15">Beleg:</text>
             <text>${ticket.printId()}</text>
         </line>
         <line>
-            <text align="left" length="15">Date:</text>
+            <text align="left" length="15">Datum:</text>
             <text>${ticket.printDate()}</text>
         </line>
 
     #if ($ticket.getCustomer())
         <line>
-            <text align="left" length="15">Customer:</text>
+            <text align="left" length="15">Kunde:</text>
             <text>${ticket.getCustomer().getName()}</text>
         </line>
         <line>
@@ -63,7 +63,7 @@
 
         #if (${tickettext.place} != ${place})
         <line>
-           <text align="left" length="15">Table:</text>
+           <text align="left" length="15">Tisch:</text>
            <text>${place}</text>
         </line>
         #end

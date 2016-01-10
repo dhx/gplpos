@@ -9,7 +9,7 @@
             <text align="right" length="10">${ticket.printTotal()}</text>
         </line>
         <line>
-            <text align="center" length="20">Thank You for your custom</text>
+            <text align="center" length="20">Danke, für ihren Einkauf</text>
         </line>
     </display>
     #foreach ($paymentline in $ticket.payments)      

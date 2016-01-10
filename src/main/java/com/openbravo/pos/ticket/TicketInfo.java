@@ -268,7 +268,7 @@ public final class TicketInfo implements SerializableRead, Externalizable {
 
         if (m_User != null) {
             name.append(m_User.getName());
-            name.append(" - ");
+            name.append(" / ");
         }
         
         if (info == null) {
@@ -282,7 +282,7 @@ public final class TicketInfo implements SerializableRead, Externalizable {
           
             }
         if (getCustomerId() != null) {
-            name.append(" - ");
+            name.append(" / ");
             name.append(m_Customer.toString());
         }
         return name.toString();
@@ -349,10 +349,11 @@ public final class TicketInfo implements SerializableRead, Externalizable {
      * @return
      */
     public String getCustomerId() {
-        if (m_Customer == null) {
+        final CustomerInfoExt m_Customer1 = m_Customer;
+        if (m_Customer1 == null) {
             return null;
         } else {
-            return m_Customer.getId();
+            return m_Customer1.getId();
         }
     }
     
