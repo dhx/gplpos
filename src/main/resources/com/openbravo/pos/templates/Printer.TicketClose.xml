@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Originalscript---- http://sourceforge.net/projects/unicentaopos _ Modifiziert fuer Oesterreich von Prossliner Alexander
-	
-    This displays amount tendered and change on customer display
-
+    Originalscript- http://sourceforge.net/projects/unicentaopos _ Modifiziert fuer Oesterreich von Prossliner Alexander
  -->
 <output>   
     <display>

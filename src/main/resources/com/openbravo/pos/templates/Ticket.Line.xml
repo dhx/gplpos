@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Originalscript---- http://sourceforge.net/projects/unicentaopos _ Modifiziert fuer Oesterreich von Prossliner Alexander
+<!-- 
+    Originalscript- http://sourceforge.net/projects/unicentaopos _ Modifiziert fuer Oesterreich von Prossliner Alexander
  -->
-
 <!-- This sales transaction screen is great for Retailers! -->
 <line>
     <column name="label.item" width="235" align="left" value="&lt;html&gt;#if ($ticketline.isProductCom()) &lt;i&gt;*&amp;nbsp;&amp;nbsp;${ticketline.printName()}&lt;/i&gt; #else ${ticketline.printName()} #end #if ($ticketline.getProperty('notes', '') != '') &lt;br&gt;*$ticketline.getProperty('notes', '')* #end &lt;br&gt;${ticketline.getProductAttSetInstDesc()}"/>
