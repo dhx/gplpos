@@ -139,6 +139,9 @@ INSERT INTO RESOURCES(ID, NAME, RESTYPE, CONTENT) VALUES('61', 'script.posapps',
 INSERT INTO RESOURCES(ID, NAME, RESTYPE, CONTENT) VALUES('62', 'img.posapps', 1, $FILE{/com/openbravo/pos/templates/img.posapps.png});
 INSERT INTO RESOURCES(ID, NAME, RESTYPE, CONTENT) VALUES('63', 'srcipt.keybord', 0, $FILE{/com/openbravo/pos/templates/script.keybord.txt});
 INSERT INTO RESOURCES(ID, NAME, RESTYPE, CONTENT) VALUES('64', 'srcipt.event', 0, $FILE{/com/openbravo/pos/templates/script.event.xml});
+
+INSERT INTO RESOURCES(ID, NAME, RESTYPE, CONTENT) VALUES('65', 'openbravo.properties', 0, $FILE{/com/openbravo/pos/templates/openbravo.properties.txt});
+
 CREATE TABLE TAXCUSTCATEGORIES (
     ID VARCHAR(255) NOT NULL,
     NAME VARCHAR(255) NOT NULL,
