@@ -86,6 +86,14 @@ public class CustomerInfo implements Serializable {
     }
 
     /**
+     * 
+     * @param id
+     */
+    public void setId(String id) {
+    	this.id = id;
+    }
+    
+    /**
      *
      * @return taxid string
      */
