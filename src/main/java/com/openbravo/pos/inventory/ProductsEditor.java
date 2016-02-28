@@ -822,6 +822,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         jLabel24 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
         m_jTitle = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -876,6 +877,9 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_jVprice = new javax.swing.JCheckBox();
         m_jPrintKB = new javax.swing.JCheckBox();
         m_jImage = new com.openbravo.data.gui.JImageEditor();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAttributes = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -890,11 +894,8 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         jLabel26 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtAttributes = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jPanel7 = new javax.swing.JPanel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 50), new java.awt.Dimension(30, 50), new java.awt.Dimension(30, 32767));
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
 
@@ -902,12 +903,17 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         jLabel27.setText("jLabel27");
 
-        setLayout(null);
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel6.setPreferredSize(new java.awt.Dimension(400, 392));
+        jPanel6.setLayout(new java.awt.BorderLayout());
 
         m_jTitle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        m_jTitle.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        add(m_jTitle);
-        m_jTitle.setBounds(310, 0, 240, 20);
+        m_jTitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        m_jTitle.setMaximumSize(new java.awt.Dimension(10000, 25));
+        m_jTitle.setMinimumSize(new java.awt.Dimension(100, 25));
+        m_jTitle.setPreferredSize(new java.awt.Dimension(100, 25));
+        jPanel6.add(m_jTitle, java.awt.BorderLayout.NORTH);
 
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
@@ -1191,7 +1197,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         jLabel23.setText(bundle.getString("label.prodminmax")); // NOI18N
         jLabel23.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel2.add(jLabel23);
-        jLabel23.setBounds(250, 220, 270, 60);
+        jLabel23.setBounds(250, 220, 270, 50);
 
         m_jStockUnits.setEditable(false);
         m_jStockUnits.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -1199,7 +1205,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_jStockUnits.setText("0");
         m_jStockUnits.setBorder(null);
         jPanel2.add(m_jStockUnits);
-        m_jStockUnits.setBounds(240, 280, 80, 25);
+        m_jStockUnits.setBounds(250, 270, 80, 25);
 
         m_jVprice.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel2.add(m_jVprice);
@@ -1211,6 +1217,16 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         jTabbedPane1.addTab(AppLocal.getIntString("label.prodstock"), jPanel2); // NOI18N
         jTabbedPane1.addTab("Image", m_jImage);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        txtAttributes.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jScrollPane1.setViewportView(txtAttributes);
+
+        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jTabbedPane1.addTab(AppLocal.getIntString("label.properties"), jPanel3); // NOI18N
 
         jPanel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jPanel4.setLayout(null);
@@ -1224,7 +1240,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         jScrollPane2.setViewportView(m_jDisplay);
 
         jPanel4.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 40, 480, 40);
+        jScrollPane2.setBounds(10, 40, 530, 70);
 
         jButtonHTML.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButtonHTML.setText(bundle.getString("button.htmltest")); // NOI18N
@@ -1243,7 +1259,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
             }
         });
         jPanel4.add(jButtonHTML);
-        jButtonHTML.setBounds(205, 90, 110, 70);
+        jButtonHTML.setBounds(120, 140, 110, 70);
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1251,9 +1267,9 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         jLabel17.setToolTipText("");
         jLabel17.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel4.add(jLabel17);
-        jLabel17.setBounds(10, 200, 330, 100);
+        jLabel17.setBounds(40, 230, 310, 100);
         jPanel4.add(jSeparator1);
-        jSeparator1.setBounds(150, 300, 0, 2);
+        jSeparator1.setBounds(150, 300, 2, 3);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -1337,40 +1353,35 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         );
 
         jPanel4.add(jPanel5);
-        jPanel5.setBounds(360, 110, 180, 220);
+        jPanel5.setBounds(360, 130, 180, 220);
 
         jTabbedPane1.addTab("Button", jPanel4);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        jPanel3.setLayout(new java.awt.BorderLayout());
+        jPanel6.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
-        txtAttributes.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jScrollPane1.setViewportView(txtAttributes);
+        add(jPanel6, java.awt.BorderLayout.CENTER);
 
-        jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jPanel7.setMinimumSize(new java.awt.Dimension(150, 500));
+        jPanel7.setPreferredSize(new java.awt.Dimension(150, 800));
+        jPanel7.setLayout(new java.awt.BorderLayout());
+        jPanel7.add(filler1, java.awt.BorderLayout.NORTH);
 
-        jTabbedPane1.addTab(AppLocal.getIntString("label.properties"), jPanel3); // NOI18N
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(160, 102));
 
-        add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 0, 560, 370);
-
-        jTextArea1.setBackground(new java.awt.Color(250, 250, 250));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Rot gekennteichnete Felder sind Pflicht!\n\nHilfstext wird nur beim Betrieb mit einer Maus angezeigt.");
-        jScrollPane3.setViewportView(jTextArea1);
-
-        add(jScrollPane3);
-        jScrollPane3.setBounds(20, 370, 520, 113);
-
-        jTextArea2.setBackground(new java.awt.Color(250, 250, 250));
+        jTextArea2.setEditable(false);
+        jTextArea2.setBackground(java.awt.SystemColor.window);
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Droid Sans", 0, 14)); // NOI18N
+        jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Bei einer größeren\nMenge an Produkten\nist es sinnvoll,\nim oberen Menü\nbei \"Warengruppe\"\ndie Auswahl zu \nbegrenzen!\n\nAnschließend auf\n\"Aktualisieren\" \ndrücken.");
+        jTextArea2.setText("Bei einer größeren\nMenge an Produkten\nist es sinnvoll,\nim oberen Menü\nbei \"Warengruppe\"\ndie Auswahl zu \nbegrenzen!\n\nAnschließend auf\n\"Aktualisieren\" \ndrücken.\n\nRot gekenntzeichnete Felder sind Pflicht!\n\nHilfstext wird nur\nbeim Betrieb mit\neiner Maus angezeigt.");
+        jTextArea2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea2.setMargin(new java.awt.Insets(10, 10, 10, 10));
         jScrollPane4.setViewportView(jTextArea2);
 
-        add(jScrollPane4);
-        jScrollPane4.setBounds(570, 40, 183, 360);
+        jPanel7.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        add(jPanel7, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_jInCatalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jInCatalogActionPerformed
@@ -1428,6 +1439,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButtonHTML;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1466,13 +1478,13 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JComboBox m_jAtt;
     private javax.swing.JTextField m_jCatalogOrder;
