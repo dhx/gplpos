@@ -30,6 +30,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.ListCellRenderer;
 
 /**
@@ -100,11 +101,15 @@ public abstract class JPanelTable extends JPanel implements JPanelView, BeanFact
                 add(c, BorderLayout.NORTH);
             }
 
+            JSplitPane splitPane = new javax.swing.JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+            splitPane.setOneTouchExpandable(true);
+            splitPane.setContinuousLayout(true);
+                
             // Add the editor
             c = getEditor().getComponent();
             if (c != null) {
-                c.applyComponentOrientation(getComponentOrientation());                
-                container.add(c, BorderLayout.CENTER);            
+                c.applyComponentOrientation(getComponentOrientation());
+                splitPane.setRightComponent(c);           
             }
 
             // el panel este
@@ -115,9 +120,11 @@ public abstract class JPanelTable extends JPanel implements JPanelView, BeanFact
                 if (cr != null) {
                     nl.setCellRenderer(cr);
                 }
-                container.add(nl, java.awt.BorderLayout.LINE_START);
+                splitPane.setLeftComponent(nl);
             }
 
+            container.add(splitPane, java.awt.BorderLayout.CENTER);
+            
             // add toolbar extras
             c = getToolbarExtras();
             if (c != null) {
