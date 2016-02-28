@@ -27,6 +27,8 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Random;
 
+import org.apache.commons.lang.WordUtils;
+
 /**
  *
  * @author JG uniCenta
@@ -167,4 +169,17 @@ public class StringUtils {
         return true;
     }
     
+    
+    /**
+     * @param str
+     * @param wrapLength
+     * @param maxLength
+     * @return
+     */
+    public static String[] wrapString(String str, int wrapLength, int maxLength) {
+    	if (maxLength > 0 && str.length() > maxLength) {
+    		str = str.substring(0,maxLength);
+    	}
+    	return WordUtils.wrap(str,wrapLength).split("\n");
+    }
 }

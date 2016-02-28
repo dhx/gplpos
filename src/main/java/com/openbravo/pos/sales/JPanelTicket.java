@@ -50,6 +50,8 @@ import com.openbravo.pos.util.AltEncrypter;
 import com.openbravo.pos.util.InactivityListener;
 import com.openbravo.pos.util.JRPrinterAWT300;
 import com.openbravo.pos.util.ReportUtils;
+import com.openbravo.pos.util.StringUtils;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -1496,6 +1498,7 @@ if (pickupSize!=null && (Integer.parseInt(pickupSize) >= tmpPickupId.length())){
                 script.put("place", ticketext);
                 script.put("warranty", warrantyPrint);
                 script.put("pickupid",getPickupString(ticket));
+                script.put("StringUtils",StringUtils.class);
 
 // JG Aug 2014
                 refreshTicket();                
