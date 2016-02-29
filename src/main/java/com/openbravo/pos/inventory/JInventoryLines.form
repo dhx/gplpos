@@ -22,6 +22,7 @@
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Properties>
+        <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="12" style="0"/>
         </Property>
@@ -37,7 +38,7 @@
         <Component class="javax.swing.JTable" name="m_tableinventory">
           <Properties>
             <Property name="autoCreateColumnsFromModel" type="boolean" value="false"/>
-            <Property name="autoResizeMode" type="int" value="0"/>
+            <Property name="autoResizeMode" type="int" value="4"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
             <Property name="showVerticalLines" type="boolean" value="false"/>

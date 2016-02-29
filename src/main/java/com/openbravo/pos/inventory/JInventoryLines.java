@@ -51,11 +51,13 @@ public class JInventoryLines extends javax.swing.JPanel {
                 , new DataCellRenderer(javax.swing.SwingConstants.LEFT)
                 , new DefaultCellEditor(new JTextField()));
         c.setHeaderValue(AppLocal.getIntString("label.item"));
+        c.setPreferredWidth(400);
         columns.addColumn(c);
         c = new TableColumn(1, 35
                 , new DataCellRenderer(javax.swing.SwingConstants.RIGHT)
                 , new DefaultCellEditor(new JTextField()));
         c.setHeaderValue(AppLocal.getIntString("label.units"));
+        c.setPreferredWidth(45);
         columns.addColumn(c);
         c = new TableColumn(2, 75
                 , new DataCellRenderer(javax.swing.SwingConstants.RIGHT)
@@ -318,10 +320,11 @@ public class JInventoryLines extends javax.swing.JPanel {
         setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         setLayout(new java.awt.BorderLayout());
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         m_tableinventory.setAutoCreateColumnsFromModel(false);
-        m_tableinventory.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        m_tableinventory.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         m_tableinventory.setFocusable(false);
         m_tableinventory.setRequestFocusEnabled(false);
         m_tableinventory.setShowVerticalLines(false);
