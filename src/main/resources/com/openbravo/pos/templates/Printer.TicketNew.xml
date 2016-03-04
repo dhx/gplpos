@@ -86,12 +86,22 @@
 
     #foreach ($ticketline in $ticket.getLines())
         <line>
-        #if ($ticketline.isProductCom())
-            <text align ="left" length="17">*${ticketline.printName()}</text>
-        #else
-            <text align ="left" length="17">${ticketline.printName()}</text>
-        #end
-        <text align ="right" length="8">${ticketline.printPriceTax()}</text>
+	#set ($pricetaxwidth = 25)
+	#set ($ticketlineName = $ticketline.printName())
+	#if ($ticketline.isProductCom())
+		#set ($ticketlineNamePrint = "*${ticketlineName}")
+	#else
+		#set ($ticketlineNamePrint = "${ticketlineName}")
+	#end
+	#foreach ($nameline in $StringUtils.wrapString($ticketlineNamePrint,32,80))
+		#if ($nameline.length() > 17)
+			<text align="left" length="42">${nameline}</text></line><line>
+		#else
+			<text align="left" length="17">${nameline}</text>
+			#set ($pricetaxwidth = 8)
+		#end
+	#end
+		<text align ="right" length="$pricetaxwidth">${ticketline.printPriceTax()}</text>
         <text align ="right" length="7">x${ticketline.printMultiply()}</text>
         <text align ="right" length="10">${ticketline.printValue()}</text>
         </line>
