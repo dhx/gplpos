@@ -18,7 +18,7 @@
                 
 	<!-- SET Line or Total Discount (Default=TotalDiscount= ENABLED) -->
 	<button key="button.totaldiscount" image="img.discount" code="script.totaldiscount"/>
-	<!-- <button key="button.linediscount" image="img.discount" code="script.linediscount"/>  -->
+	<!-- <button key="button.linediscount" image="img.discount.small" code="script.linediscount"/> -->
 
 	<!-- SET Waiter's name (Default=DISABLED) -->
 	<!-- <button key="button.setperson" image="img.user" code="script.SetPerson"/>  -->
