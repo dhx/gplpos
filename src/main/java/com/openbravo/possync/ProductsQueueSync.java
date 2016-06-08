@@ -56,6 +56,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.MalformedURLException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
@@ -236,21 +237,22 @@ public class ProductsQueueSync implements ProcessAction {
             for (int j = 0; j < details.getLength(); j++) {
                 Node n = details.item(j);
                 String column = n.getNodeName();
+                String textContent = URLDecoder.decode(n.getTextContent(),"UTF-8");
                 if (column.equals("ProductName")) {
-                    product.setName(n.getTextContent());
+                    product.setName(textContent);
                 } else if (column.equals(MProduct.COLUMNNAME_M_Product_Category_ID)) {
-                    cate.setId(n.getTextContent());
+                    cate.setId(textContent);
                     product.setCategory(cate);
                 } else if (column.equals("CategoryName")) {
-                    cate.setName(n.getTextContent());
+                    cate.setName(textContent);
                     product.setCategory(cate);
                 } else if (column.equals(MProduct.COLUMNNAME_M_Product_ID)) {
-                    product.setId(n.getTextContent());
+                    product.setId(textContent);
                 } else if (column.equals(MProduct.COLUMNNAME_C_TaxCategory_ID)) {
-                    newtax.setId(n.getTextContent());
+                    newtax.setId(textContent);
                     product.setTax(newtax);
                 } else if (column.equals("TaxName")) {
-                    newtax.setName(n.getTextContent());
+                    newtax.setName(textContent);
                     product.setTax(newtax);
                 } else if (column.equals("QtyOnHand")) {
                     product.setQtyonhand(Double.parseDouble(n.getTextContent()));
@@ -259,7 +261,7 @@ public class ProductsQueueSync implements ProcessAction {
                 } else if (column.equals(MProductPrice.COLUMNNAME_PriceLimit)) {
                     product.setPurchasePrice(Double.parseDouble(n.getTextContent()));
                 } else if (column.equals(MProduct.COLUMNNAME_UPC)) {
-                    product.setEan(n.getTextContent());
+                    product.setEan(textContent);
                 }
             }
             productList[i] = product;
