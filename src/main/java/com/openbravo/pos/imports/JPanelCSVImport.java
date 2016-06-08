@@ -313,6 +313,12 @@ public class JPanelCSVImport extends JPanel implements JPanelView {
                     csvMessage = "Missing data or Invalid number";
                 }
 
+                if (((String) jComboSeparator.getSelectedItem()).charAt(0) == ';') {
+                	// If the field separator is ; we assume a locale that uses , as the comma separator
+                	BuyPrice = BuyPrice.replaceAll(",",".");
+                	SellPrice = SellPrice.replaceAll(",",".");
+                }
+                
                 // Validate and convert the prices or change them to null
                 if (validateNumber(BuyPrice)) {
                     productBuyPrice = Double.parseDouble(BuyPrice);

@@ -130,7 +130,7 @@
             </line>
             <line>
               <text align="left" length="22">erhalten:</text>
-              <text align ="right" length="20">${paymentline.printPaid()}</text>
+              <text align ="right" length="20">${paymentline.printTendered()}</text>
             </line>
             <line>
               <text align="left" length="22">gewechselt:</text>
