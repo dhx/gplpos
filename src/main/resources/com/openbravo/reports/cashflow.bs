@@ -24,15 +24,14 @@ report.setReport("/com/openbravo/reports/cashflow");
 report.setResourceBundle("com/openbravo/reports/cashflow_messages");
 
 report.setSentence("SELECT " +
-			"PAYMENTS.PAYMENT, " +
+			"LEFT(PAYMENTS.PAYMENT,4) PAYMENTCAT, PAYMENTS.PAYMENT, " +
 			"SUM( PAYMENTS.TOTAL ) AS PAYMENT_TOTAL " +
-                    "FROM CLOSEDCASH, PAYMENTS, RECEIPTS " +
-                    "WHERE CLOSEDCASH.MONEY = RECEIPTS.MONEY " +
-			"AND PAYMENTS.RECEIPT = RECEIPTS.ID AND ?(QBF_FILTER) " +
+                    "FROM PAYMENTS, RECEIPTS " +
+                    "WHERE PAYMENTS.RECEIPT = RECEIPTS.ID AND ?(QBF_FILTER) " +
                     "GROUP BY PAYMENTS.PAYMENT");
 
-report.addParameter("CLOSEDCASH.DATESTART");
-report.addParameter("CLOSEDCASH.DATESTART");
+report.addParameter("RECEIPTS.DATENEW");
+report.addParameter("RECEIPTS.DATENEW");
 
 paramdates = new com.openbravo.pos.reports.JParamsDatesInterval();
 
@@ -42,6 +41,7 @@ paramdates.setEndDate(com.openbravo.beans.DateUtils.getTodayMinutes());
 
 report.addQBFFilter(paramdates);
 
+report.addField("PAYMENTCAT", com.openbravo.data.loader.Datas.STRING);
 report.addField("PAYMENT", com.openbravo.data.loader.Datas.STRING);
 report.addField("PAYMENT_TOTAL", com.openbravo.data.loader.Datas.DOUBLE);
 
