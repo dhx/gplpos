@@ -1395,6 +1395,12 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
                                     ? "Printer.Ticket"
 //                                    ? ticketPrintType
                                     : "Printer.Ticket2", ticket, ticketext);  
+
+                            // print the ticket a second time
+                            printTicket(paymentdialog.isPrintSelected() || warrantyPrint
+                                    ? "Printer.Ticket"
+                                    : "Printer.Ticket2", ticket, ticketext);  
+
                             
 //                            if (m_oTicket.getLoyaltyCardNumber() != null){
 // add points to the card
