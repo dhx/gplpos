@@ -646,6 +646,9 @@ public final class TicketInfo implements SerializableRead, Externalizable {
      */
     public TicketTaxInfo getTaxLine(TaxInfo tax) {
 
+    	if (taxes == null) {
+    		return new TicketTaxInfo(tax); 
+    	}
         for (TicketTaxInfo taxline : taxes) {
             if (tax.getId().equals(taxline.getTaxInfo().getId())) {
                 return taxline;
