@@ -205,13 +205,33 @@ public class PaymentsModel {
             , SerializerWriteString.INSTANCE
             , new SerializerReadClass(PaymentsModel.PaymentsLine.class)) //new SerializerReadBasic(new Datas[] {Datas.STRING, Datas.DOUBLE}))
             .list(app.getActiveCashIndex()); 
-        
+
         if (l == null) {
             p.m_lpayments = new ArrayList();
         } else {
             p.m_lpayments = l;
         }        
-        
+
+        String c_payment_cat="";
+        Double cat_subtotal=0.0;
+        int cat_index = p.m_lpayments.size();
+        for(int li = p.m_lpayments.size()-1; li >= 0; li--) {
+            PaymentsLine pl = p.m_lpayments.get(li);
+            String pcat = "total." + pl.getType().substring(0, 4);
+            if (!c_payment_cat.equals("") && !c_payment_cat.equals(pcat)) {
+                PaymentsLine stpl = new PaymentsLine(c_payment_cat, cat_subtotal, "");
+                p.m_lpayments.add(cat_index,stpl);
+                cat_index = li+1;
+                cat_subtotal = 0.0;
+            }
+            cat_subtotal+=pl.getValue();
+            c_payment_cat = pcat;
+        }
+        if (cat_index > 0) {
+            PaymentsLine stpl = new PaymentsLine(c_payment_cat, cat_subtotal, "");
+            p.m_lpayments.add(cat_index,stpl);
+        }
+
         // Sales
         Object[] recsales = (Object []) new StaticSentence(app.getSession(),
                 "SELECT COUNT(DISTINCT RECEIPTS.ID), SUM(TICKETLINES.UNITS * TICKETLINES.PRICE) " +
@@ -1013,6 +1033,15 @@ public class PaymentsModel {
      *
      */
     public static class PaymentsLine implements SerializableRead {
+
+        public PaymentsLine() {
+        }
+        
+        public PaymentsLine(String m_PaymentType, Double m_PaymentValue, String s_PaymentReason) {
+            this.m_PaymentType = m_PaymentType;
+            this.m_PaymentValue = m_PaymentValue;
+            this.s_PaymentReason = s_PaymentReason;
+        }
         
         private String m_PaymentType;
         private Double m_PaymentValue;
